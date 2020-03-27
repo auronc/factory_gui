@@ -43,6 +43,8 @@ class ConsoleUi(ttk.Frame):
         self.scrolled_text.tag_config('CRITICAL', foreground='red', underline=1)
 
         self.logger = logging.getLogger(__name__)
+        self.logger.propagate = False # prevent console logging
+
         # Create a logging handler using a queue
         self.log_queue = queue.Queue()
         self.queue_handler = QueueHandler(self.log_queue)
